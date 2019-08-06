@@ -1,7 +1,10 @@
 # astrostore-chrome-extension
 AstroStore chrome extension for quickly adding bookmarks!
 
-## How To Use
+## Published Version
+https://chrome.google.com/webstore/detail/astrostore-quick-add/papafaajgpnblabjapiibkhdfjaghnhg
+
+## Deploy locally for testing
 - Clone repo to you local computer
 - In Chrome, navigate to Extensions settings (chrome://extensions)
 - Enable 'Developer Mode' 
