@@ -3,17 +3,19 @@
 /************ dialogs ************/
 .container {
     font-family: "Lato", sans-serif;
-    height: 380px;
+    height: 400px;
     width: 340px;
     margin: auto;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     background-color: #fff;
+    justify-content: space-around;
 }
 
 .cSmall {
     height: 320px;
+    justify-content: space-between;
 }
 
 .modalHeader {
@@ -47,6 +49,7 @@
 .logOut {
     font-size: 10pt;
     color: #415a70;
+    padding-bottom: 20px;
 }
 
 .logOut:hover {

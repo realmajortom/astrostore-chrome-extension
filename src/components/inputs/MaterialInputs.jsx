@@ -60,10 +60,9 @@ export function TextField(props) {
             <MaterialInput
                 type={props.type}
                 placeholder={props.placeholder}
-                value={props.val}
+                value={props.value}
                 onChange={props.onChange}
             />
-
         </FormControl>
     );
 }

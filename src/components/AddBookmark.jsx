@@ -1,4 +1,5 @@
-import React, {useState, useEffect, useReducer} from 'react';
+/*global chrome*/
+import React, {useState, useEffect} from 'react';
 import axios from 'axios/index';
 import {makeStyles} from '@material-ui/styles/index';
 import MenuItem from '@material-ui/core/MenuItem/index';
@@ -20,45 +21,37 @@ const useStyles = makeStyles({
     }
 });
 
-const initialState = {
-    dropItems: [],
-    tabUrl: '',
-    tabTitle: ''
-};
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'ddl':
-            return {...state, dropItems: action.payload.sort((a,b) => a.sequence - b.sequence)};
-        case 'tabData':
-            return {...state, tabUrl: action.url, tabTitle: action.title};
-    }
-
-}
 
 function AddBookmark(props) {
     const classes = useStyles();
     const token = localStorage.getItem('JWT');
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [dropItems, setDropItems] = useState([]);
 
-    const [message, setMessage] = useState('');
-    const [parentId, setParent] = useState('');
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
+    const [message, setMessage] = useState('');
+    const [parentId, setParent] = useState('');
 
 
     useEffect(() => {
         axios.get('https://astrostore.io/api/collection/all', {
             headers: {Authorization: `JWT ${token}`}
-        }).then(res => {
-            dispatch({type: 'ddl', payload: res.data});
-        });
-
-        // const currentUrl = chrome.tab.url;
-        // const currentTitle = chrome.tab.title;
-        // dispatch({type: 'tabData', url: currentUrl, title: currentTitle});
-
+        }).then(res =>
+            setDropItems(res.data.sort((a,b) => a.sequence - b.sequence))
+        );
     }, [token]);
+
+    useEffect(() => {
+        chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
+            setTitle(tabs[0].title);
+        })
+    }, []);
+
+    useEffect(() => {
+        chrome.tabs.query({currentWindow: true, active: true}, (tabs) => {
+            setUrl(tabs[0].url);
+        })
+    }, []);
 
 
     const addBookmark = () => {
@@ -103,7 +96,7 @@ function AddBookmark(props) {
                     onChange={(e) => setParent(e.target.value)}
                 >
                     {
-                        state.dropItems.map(c =>
+                        dropItems.map(c =>
                             <MenuItem value={c._id} key={c._id} className={classes.root} >
                                 {c.title}
                             </MenuItem>
