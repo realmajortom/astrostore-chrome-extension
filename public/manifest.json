@@ -1,13 +1,11 @@
 {
   "manifest_version": 2,
   "name": "AstroStore Quick Add",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a companion to the AstroStore.io web app. Use this extension to save bookmarks as you browse :)",
   "author": "Thomas Girgenti",
   "icons": {
-    "16": "favicon.png",
-    "48": "astronaut-512.png",
-    "128": "astronaut-512.png"
+    "128": "astronaut-128.png"
   },
   "browser_action": {
     "default_title": "AstroStore Quick Add",
