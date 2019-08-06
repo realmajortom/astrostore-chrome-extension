@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "AstroStore Quick Add",
+  "version": "1.0.0",
+  "description": "A companion to the AstroStore.io web app, allowing users to quickly bookmarks as they browse!",
+  "author": "Thomas Girgenti",
+  "icons": {
+    "16": "favicon.png",
+    "48": "astronaut-512.png",
+    "128": "astronaut-512.png"
+  },
+  "browser_action": {
+    "default_title": "AstroStore Quick Add",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "favicon.png",
+      "32": "favicon.png"
+    }
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+T",
+        "mac": "MacCtrl+Shift+T"
+      },
+      "description": "Opens AstroStore Quick Add"
+    }
+  },
+  "permissions": ["activeTab"]
+}

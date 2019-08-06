@@ -1,0 +1,55 @@
+
+
+/************ dialogs ************/
+.container {
+    font-family: "Lato", sans-serif;
+    height: 380px;
+    width: 340px;
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: #fff;
+}
+
+.cSmall {
+    height: 320px;
+}
+
+.modalHeader {
+    font-family: "Roboto", sans-serif;
+    color: #313131;
+    font-size: 24pt;
+    margin-top: 20px;
+}
+
+.modalMessage {
+    margin-bottom: 15px;
+}
+
+.collectionSelection {
+    margin: 12px 0 36px 0;
+    width: 80%;
+}
+
+.fieldWrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.submitWrapper {
+    margin: 30px 0;
+}
+
+.logOut {
+    font-size: 10pt;
+    color: #415a70;
+}
+
+.logOut:hover {
+    color: #f4594e;
+    cursor: pointer;
+}
