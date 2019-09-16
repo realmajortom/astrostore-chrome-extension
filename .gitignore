@@ -2,4 +2,6 @@
 
 .idea/
 
+_MACOSX/
+
 node_modules/
