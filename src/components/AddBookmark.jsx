@@ -32,13 +32,42 @@ function AddBookmark(props) {
     const [message, setMessage] = useState('');
     const [parentId, setParent] = useState('');
 
-
     useEffect(() => {
-        axios.get('https://astrostore.io/api/collection/all', {
-            headers: {Authorization: `JWT ${token}`}
-        }).then(res =>
-            setDropItems(res.data.sort((a,b) => a.sequence - b.sequence))
-        );
+
+	    axios.get('https://astrostore.io/api/collection/all',
+		    {headers: {Authorization: `JWT ${token}`}})
+
+	         .then(res => {
+
+		         let rawColls = res.data.collections;
+		         let sortedColls = [];
+		         let order = res.data.order;
+
+		         for (let i = 0; i < order.length; i++) {
+
+			         const index = rawColls.findIndex(c => c.id === order[i]);
+
+			         if (index >= 0) {
+				         sortedColls.push(rawColls[index]);
+				         rawColls.splice(index, 1);
+			         }
+		         }
+
+		         if (rawColls.length > 0) {
+
+			         for (let j = 0; j < rawColls.length; j++) {
+				         sortedColls.push(rawColls[j]);
+				         order.push(rawColls[j].id);
+			         }
+
+			         axios.post('https://astrostore.io/api/user/order',
+				         {order: order},
+				         {headers: {Authorization: `JWT ${token}`}})
+		         }
+
+		         setDropItems(sortedColls);
+	         });
+
     }, [token]);
 
     useEffect(() => {
