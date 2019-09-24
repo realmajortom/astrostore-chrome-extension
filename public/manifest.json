@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "AstroStore Quick Add",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "This is a companion to the AstroStore.io web app. Use this extension to save bookmarks as you browse :)",
   "author": "Thomas Girgenti",
   "homepage_url": "https://astrostore.io",
