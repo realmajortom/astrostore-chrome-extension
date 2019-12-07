@@ -1,4 +1,10 @@
 body {
-    width: 411px;
-    height: 500px;
+	/*height: 444px;*/
+	margin: 0;
+	padding: 0;
+	width: 340px;
 }
+
+/*#root {*/
+/*	height: 444px;*/
+/*}*/
