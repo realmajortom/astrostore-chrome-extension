@@ -40,6 +40,15 @@ const useStyles = makeStyles({
 		color: '#1d1d1d!important',
 		marginBottom: '10px!important'
 	},
+	labelDark: {
+		fontFamily: ['Lato', 'sans-serif'],
+		fontSize: '21px',
+		color: '#b3b3b3!important',
+		marginBottom: '10px!important'
+	},
+	innerDark: {
+		color: '#ffffff!important'
+	},
 	dropdownPaper: {
 		borderRadius: 3
 	},
@@ -51,33 +60,43 @@ const useStyles = makeStyles({
 
 
 export function TextField(props) {
+	const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	const classes = useStyles();
+
 	return (
 		<FormControl classes={{root: classes.formControl}}>
 
-			<InputLabel classes={{root: classes.label}} shrink={true}>
+			<InputLabel classes={{root: (darkMode ? classes.labelDark : classes.label)}} shrink={true}>
 				{props.label}
 			</InputLabel>
 
-			<MaterialInput type={props.type} placeholder={props.placeholder} value={props.value} onChange={props.onChange}/>
-		</FormControl>
+			<MaterialInput type={props.type}
+										 placeholder={props.placeholder}
+										 value={props.value}
+										 onChange={props.onChange}
+										 classes={{root: (darkMode ? classes.innerDark : null)}}/> </FormControl>
 	);
 }
 
 
 export function Dropdown(props) {
+	const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	const classes = useStyles();
+
 	return (
 		<FormControl classes={{root: classes.formControl}}>
 
-			<InputLabel classes={{root: classes.label}} shrink={true}>
+			<InputLabel classes={{root: (darkMode ? classes.labelDark : classes.label)}} shrink={true}>
 				{props.label}
 			</InputLabel>
 
-			<Select value={props.value} onChange={props.onChange} input={<MaterialInput/>} MenuProps={{
-				transitionDuration: 50,
-				classes: {paper: classes.dropdownPaper, list: classes.dropdownList}
-			}}>
+			<Select value={props.value}
+							onChange={props.onChange}
+							input={<MaterialInput classes={{root: (darkMode ? classes.innerDark : null)}}/>}
+							MenuProps={{
+								transitionDuration: 50,
+								classes: {paper: classes.dropdownPaper, list: classes.dropdownList}
+							}}>
 				{props.children}
 			</Select>
 

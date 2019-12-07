@@ -36,3 +36,10 @@
 .logOut:hover {
 	color: #f4594e;
 }
+
+@media (prefers-color-scheme: dark) {
+	.container {
+		background-color: rgb(25, 25, 25);
+		color: #ffffff;
+	}
+}
